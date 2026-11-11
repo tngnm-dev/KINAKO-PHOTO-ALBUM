@@ -1,0 +1,343 @@
+.gallery {
+  padding-block: calc(var(--header-height) + 2rem) 4rem;
+  padding-inline: 1rem;
+}
+
+/* ------------------------------
+  ページ見出し
+------------------------------ */
+.gallery__header {
+  margin-block-end: 2rem;
+
+  .page-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+  }
+
+  .page-lead {
+    margin-block-start: 0.75rem;
+
+    line-height: 1.8;
+  }
+}
+
+/* ------------------------------
+  年の絞り込み
+------------------------------ */
+.gallery-filter-wrap {
+  position: sticky;
+  inset-block-start: var(--header-height);
+  z-index: 10;
+
+  .gallery-filter {
+    --legend-fs: 0.875rem;
+
+    position: relative;
+
+    padding-block: calc(var(--legend-fs) + 1rem) 8px;
+
+    background: #fff;
+
+    .gallery-filter__legend {
+      position: absolute;
+      inset-block-start: 8px;
+      inset-inline-start: 0;
+
+      font-size: var(--legend-fs);
+      font-weight: 700;
+      line-height: 1;
+    }
+  }
+}
+
+.gallery-filter__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-block-start: 0.5rem;
+
+  .gallery-filter__option {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2rem;
+    padding-inline: 0.8rem;
+
+    font-size: 0.875rem;
+
+    border: solid 1px currentColor;
+    border-radius: 0.6rem;
+    cursor: pointer;
+
+    &:has(:focus-visible) {
+      outline: solid 3px var(--color-text);
+      outline-offset: 2px;
+    }
+
+    &.gallery-filter__option--current {
+      &::before {
+        content: '';
+        block-size: 0.6rem;
+        inline-size: 0.6rem;
+        margin-inline-end: 0.4rem;
+
+        background: currentColor;
+        border-radius: 50%;
+      }
+    }
+
+
+    &:has(:checked) {
+      color: var(--color-header-bg);
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: 0.3s background linear;
+    }
+
+    .gallery-filter__input {
+      /*radio本体*/
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.gallery-status {
+  margin-block: 1rem 2rem;
+
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+/* ------------------------------
+  年ごとのまとまり
+------------------------------ */
+.gallery__years {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 3rem;
+
+  /*CLS対策*/
+  min-block-size: 100svh;
+}
+
+.gallery-noscript {
+  padding: 1rem;
+
+  border: solid 1px currentColor;
+  border-radius: 0.5rem;
+}
+
+.gallery-year__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block-end: 0.5rem;
+  margin-block-end: 1rem;
+
+  border-block-end: solid 2px var(--color-accent);
+
+  .gallery-year__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+/* 写真の列を横に送るボタン。マウスで操作する環境だけで表示する。 */
+.gallery-year__controls {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-year__controls {
+    button {
+      display: grid;
+      place-items: center;
+      block-size: 2.5rem;
+      inline-size: 2.5rem;
+
+      color: inherit;
+
+      border: solid 1px currentColor;
+      background: transparent;
+      border-radius: 50%;
+
+      &:focus-visible {
+        outline: solid 3px var(--color-text);
+        outline-offset: 2px;
+      }
+
+      &[aria-disabled="true"] {
+        opacity: 0.35;
+        cursor: default;
+      }
+
+      /* 押せるときだけ、hover で色を変える */
+      &:hover:not([aria-disabled="true"]) {
+        background: var(--color-accent);
+      }
+    }
+
+    &:not([hidden]) {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+}
+
+.photo-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(80vw, 24rem);
+  gap: 1rem;
+
+  /* フォーカスリングがコンテナのoverflowで見切れないようにするためのpadding */
+  padding: 0.5rem;
+
+  overflow-x: auto;
+
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 0.5rem;
+  overscroll-behavior-inline: contain;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.photo-grid__item {
+  min-inline-size: 0;
+
+  scroll-snap-align: start;
+
+  .photo-grid__link {
+    display: block;
+    overflow: hidden;
+
+    border-radius: 0.5rem;
+
+    &:focus-visible {
+      outline: solid 3px var(--color-text);
+      outline-offset: 2px;
+    }
+  }
+
+}
+
+.photo-grid__image {
+  inline-size: 100%;
+  block-size: auto;
+
+  aspect-ratio: 1;
+  object-fit: cover;
+
+  background: #f4f5f7;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .photo-grid__image {
+    transition: scale 300ms ease;
+  }
+
+  .photo-grid__link:hover .photo-grid__image {
+    scale: 1.03;
+  }
+}
+
+/* ------------------------------
+  拡大表示
+------------------------------ */
+body:has(.photo-dialog[open]) {
+  overflow: hidden;
+}
+
+.photo-dialog {
+  --pdc-width: 48px;
+  --control-button-size: 2.4rem;
+  --controls-offset: 1rem;
+  --controls-padding: 0.5rem;
+  --controls-height: calc(var(--control-button-size) + var(--controls-padding) * 2);
+
+  padding: 0;
+  border: 0;
+
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+  }
+
+  .photo-dialog__image {
+    inline-size: 100%;
+    block-size: auto;
+    max-inline-size: 80dvw;
+    max-block-size: calc(100dvh - 2 * (var(--controls-offset) + var(--controls-height) + 8px));
+    object-fit: contain;
+
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+
+  .photo-dialog__controls {
+    position: fixed;
+    inset-block-end: var(--controls-offset);
+    inset-inline: 0;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    inline-size: 80dvw;
+    padding: var(--controls-padding);
+
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 8px;
+
+    user-select: none;
+
+    button {
+      display: grid;
+      place-items: center;
+      inline-size: var(--control-button-size);
+      block-size: var(--control-button-size);
+
+      font-size: 0.9rem;
+
+      border: 0;
+      border-radius: 9999px;
+
+      &[aria-disabled="true"] {
+        opacity: 0.35;
+      }
+    }
+  }
+}
+
+.photo-dialog__close {
+  position: fixed;
+  inset-block-start: 8px;
+  inset-inline-end: 8px;
+
+  display: grid;
+  place-content: center;
+  inline-size: var(--pdc-width);
+  block-size: var(--pdc-width);
+
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+
+  cursor: pointer;
+}

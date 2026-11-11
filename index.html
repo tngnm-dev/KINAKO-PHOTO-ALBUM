@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>KINAKO PHOTO ALBUM | きなこの写真アルバム</title>
+  <meta name="description" content="2016年から2024年まで一緒に暮らした猫・きなこの写真を、撮影年ごとにたどれるアルバムサイトです。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="KINAKO PHOTO ALBUM | きなこの写真アルバム">
+  <meta property="og:description" content="2016年から2024年まで一緒に暮らした猫・きなこの写真を、撮影年ごとにたどれるアルバムサイトです。">
+  <meta property="og:site_name" content="KINAKO PHOTO ALBUM">
+
+  <link rel="preload" href="./assets/fonts/cormorant-garamond-600-logo.woff" as="font" type="font/woff" crossorigin>
+  <link rel="icon" href="./assets/image/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/default.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">メインコンテンツに移動する</a>
+  <header>
+    <div class="header__inner">
+      <h1 class="header__logo">
+        <a href="./">KINAKO PHOTO ALBUM</a>
+      </h1>
+
+      <nav class="global-navigation" aria-label="メインナビゲーション">
+        <ul class="nav-list">
+          <li class="nav-list__item">
+            <a href="./gallery/">Gallery</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="main__content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__media">
+          <img src="./assets/image/hero-960.webp"
+            srcset="./assets/image/hero-480.webp 480w,
+                    ./assets/image/hero-720.webp 720w,
+                    ./assets/image/hero-960.webp 960w,
+                    ./assets/image/hero-1108.webp 1108w"
+            sizes="100vw" width="1108" height="1478" fetchpriority="high"
+            alt="家にきたばかりのきなこ">
+        </div>
+        <div class="hero__content">
+          <p class="hero__label">
+            Since 2016
+          </p>
+          <h2 id="hero-title" class="hero__title">
+            きなこの記録
+          </h2>
+          <p class="hero__description">
+            2016年からの写真を、年ごとにたどれるアルバムにしました。
+          </p>
+          <a class="hero__link" href="./gallery/">
+            年ごとの写真を見る
+          </a>
+        </div>
+      </section>
+      <section class="profile" aria-labelledby="profile-title">
+        <div class="profile__band" aria-hidden="true">
+          <ul class="profile__band-list">
+            <li class="profile__band-item">
+              (Profile)
+            </li>
+            <li class="profile__band-item">
+              Cat / Male
+            </li>
+            <li class="profile__band-item">
+              2016.06 — 2024.12
+            </li>
+            <li class="profile__band-item">
+              Norwegian Forest Cat
+            </li>
+          </ul>
+        </div>
+        <div class="profile__big" aria-hidden="true">
+          <span>K</span>
+          <span>I</span>
+          <span>N</span>
+          <span>A</span>
+          <span>K</span>
+          <span>O</span>
+        </div>
+        <h2 id="profile-title">きなこ</h2>
+        <dl class="profile__list">
+          <div class="profile__item">
+            <dt>性別</dt>
+            <dd>オス</dd>
+          </div>
+          <div class="profile__item">
+            <dt>品種</dt>
+            <dd>ノルウェージャンフォレストキャット</dd>
+          </div>
+          <div class="profile__item">
+            <dt>期間</dt>
+            <dd><time datetime="2016-06">2016.06</time> – <time datetime="2024-12">2024.12</time></dd>
+          </div>
+          <div class="profile__item">
+            <dt>好きな場所</dt>
+            <dd>ソファ・膝の上</dd>
+          </div>
+          <div class="profile__item">
+            <dt>性格</dt>
+            <dd>とても人懐こく、誰が来ても自分のファンだと思い込んで突撃していくような子でした。</dd>
+          </div>
+        </dl>
+        <!-- 写真ボード：撮影年の古い順（01 → 03） -->
+        <div class="profile__board__wrap">
+          <div class="profile__board">
+            <figure class="profile__photo">
+              <img src="./assets/photos/2016-11-18-01-720.webp" srcset="./assets/photos/2016-11-18-01-480.webp 480w,
+                        ./assets/photos/2016-11-18-01-720.webp 720w,
+                        ./assets/photos/2016-11-18-01-960.webp 960w,
+                        ./assets/photos/2016-11-18-01-1200.webp 1200w" sizes="(min-width: 48rem) 30vw, 60vw" width="1200"
+                height="1600" loading="lazy" decoding="async" alt="子猫のころのきなこ">
+              <figcaption class="profile__caption">
+                <span aria-hidden="true">子猫のころ</span>
+              </figcaption>
+            </figure>
+            <figure class="profile__photo">
+              <img src="./assets/photos/2020-02-27-01-720.webp" srcset="./assets/photos/2020-02-27-01-480.webp 480w,
+                        ./assets/photos/2020-02-27-01-720.webp 720w,
+                        ./assets/photos/2020-02-27-01-960.webp 960w,
+                        ./assets/photos/2020-02-27-01-1600.webp 1600w" sizes="(min-width: 48rem) 30vw, 60vw" width="1600"
+                height="1200" loading="lazy" decoding="async" alt="膝にちょこんと座るきなこ">
+              <figcaption class="profile__caption">
+                <span aria-hidden="true">膝にちょこんと座る</span>
+              </figcaption>
+            </figure>
+            <figure class="profile__photo">
+              <img src="./assets/photos/2024-04-17-01-720.webp" srcset="./assets/photos/2024-04-17-01-480.webp 480w,
+                        ./assets/photos/2024-04-17-01-720.webp 720w,
+                        ./assets/photos/2024-04-17-01-960.webp 960w,
+                        ./assets/photos/2024-04-17-01-1200.webp 1200w" sizes="(min-width: 48rem) 30vw, 60vw" width="1200"
+                height="1600" loading="lazy" decoding="async" alt="ソファの上でバランスよく座るきなこ">
+              <figcaption class="profile__caption">
+                <span aria-hidden="true">アンバランス</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p class="site-footer__logo">
+      <a href="./">KINAKO PHOTO ALBUM</a>
+    </p>
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+      <ul class="site-footer__list">
+        <li><a href="./" aria-current="page">Top</a></li>
+        <li><a href="./gallery/">Gallery</a></li>
+      </ul>
+    </nav>
+    <p class="site-footer__copyright">
+      <small>&copy; 2026 KINAKO PHOTO ALBUM</small>
+    </p>
+  </footer>
+</body>
+
+</html>

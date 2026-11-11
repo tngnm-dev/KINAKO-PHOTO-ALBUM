@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Gallery | KINAKO PHOTO ALBUM</title>
+  <meta name="description" content="きなこの写真を撮影年ごとにまとめたギャラリーです。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gallery | KINAKO PHOTO ALBUM">
+  <meta property="og:description" content="きなこの写真を撮影年ごとにまとめたギャラリーです。">
+  <meta property="og:site_name" content="KINAKO PHOTO ALBUM">
+
+  <link rel="preload" href="../assets/fonts/cormorant-garamond-600-logo.woff" as="font" type="font/woff" crossorigin>
+  <link rel="icon" href="../assets/image/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/default.css">
+  <link rel="stylesheet" href="../assets/css/gallery.css">
+</head>
+
+<body>
+  <a href="#main" class="skip-link">メインコンテンツに移動する</a>
+
+  <header>
+    <div class="header__inner">
+      <p class="header__logo">
+        <a href="../">KINAKO PHOTO ALBUM</a>
+      </p>
+      <nav class="global-navigation" aria-label="メインナビゲーション">
+        <ul class="nav-list">
+          <li class="nav-list__item">
+            <a href="./" aria-current="page">Gallery</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="gallery">
+    <div class="gallery__header">
+      <h1 class="page-title" lang="en">Gallery</h1>
+      <p class="page-lead">撮影した年ごとに、きなこの写真をまとめています。</p>
+    </div>
+    <div class="gallery-filter-wrap">
+      <fieldset class="gallery-filter" hidden>
+        <legend class="gallery-filter__legend">撮影年で絞り込む</legend>
+        <div class="gallery-filter__options"></div>
+      </fieldset>
+    </div>
+    <p class="gallery-status" aria-live="polite"></p>
+
+    <div class="gallery__years"></div>
+    <noscript>
+      <p class="gallery-noscript">写真の表示には JavaScript を有効にしてください。</p>
+    </noscript>
+    
+    <template id="gallery-filter-option-template">
+      <label class="gallery-filter__option">
+        <input class="gallery-filter__input" type="radio" name="year">
+        <span class="gallery-filter__label"></span>
+      </label>
+    </template>
+
+    <template id="gallery-year-template">
+      <section class="gallery-year">
+        <div class="gallery-year__head">
+          <h2 class="gallery-year__title">
+            <time></time>
+          </h2>
+          <div class="gallery-year__controls" hidden>
+            <button type="button" class="gallery-year__prev" aria-label="前の写真">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 6 9 12 15 18" />
+              </svg>
+            </button>
+            <button type="button" class="gallery-year__next" aria-label="次の写真">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <ul class="photo-grid"></ul>
+      </section>
+    </template>
+
+    <template id="photo-item-template">
+      <li class="photo-grid__item">
+        <a class="photo-grid__link">
+          <img class="photo-grid__image" decoding="async">
+        </a>
+      </li>
+    </template>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__logo">
+      <a href="../">KINAKO PHOTO ALBUM</a>
+    </p>
+    <nav class="site-footer__nav" aria-label="フッターナビゲーション">
+      <ul class="site-footer__list">
+        <li><a href="../">Top</a></li>
+        <li><a href="./" aria-current="page">Gallery</a></li>
+      </ul>
+    </nav>
+    <p class="site-footer__copyright">
+      <small>&copy; 2026 KINAKO PHOTO ALBUM</small>
+    </p>
+  </footer>
+  <dialog class="photo-dialog" aria-label="写真の拡大表示">
+    <button type="button" class="photo-dialog__close" aria-label="閉じる">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" aria-hidden="true">
+          <line x1="6" y1="6" x2="18" y2="18" />
+          <line x1="18" y1="6" x2="6" y2="18" />
+        </svg>
+      </button>
+    <img class="photo-dialog__image" src="" alt="">
+    <div class="photo-dialog__controls">
+      <button type="button" class="photo-dialog__prev" aria-label="前の写真">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 6 9 12 15 18" />
+        </svg>
+      </button>
+      <!-- 読み上げは下の.photo-dialog__statusで -->
+      <div class="photo-dialog__numbers" aria-hidden="true">
+        <span class="photo-dialog__current"></span>
+        <span>/</span>
+        <span class="photo-dialog__total"></span>
+      </div>
+      <button type="button" class="photo-dialog__next" aria-label="次の写真">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 6 15 12 9 18" />
+        </svg>
+      </button>
+    </div>
+    <!-- 読み上げ用 -->
+    <p class="photo-dialog__status visually-hidden" aria-live="polite"></p>
+  </dialog>
+  <script type="module" src="../assets/js/gallery/main.js"></script>
+</body>
+
+</html>

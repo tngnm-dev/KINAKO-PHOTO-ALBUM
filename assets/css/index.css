@@ -1,0 +1,509 @@
+@font-face {
+  font-family: "Zen Kaku Gothic New";
+  src: url("../fonts/zen-kaku-gothic-new-500-profile.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2E, U+30-32, U+34, U+36, U+2013, U+3001-3002, U+3044, U+3046, U+304C-304D, U+304F, U+3053, U+3057, U+305F-3060, U+3066-3068, U+306A, U+306E, U+3082, U+3088, U+3093, U+30A1, U+30A6-30A7, U+30A9-30AA, U+30AD, U+30B8-30B9, U+30BD, U+30C3, U+30C8, U+30CE, U+30D5, U+30E3, U+30EB-30EC, U+30F3, U+30FB-30FC, U+4E0A, U+4EBA, U+5206, U+5225, U+54C1, U+5834, U+597D, U+5B50, U+601D, U+6027, U+61D0, U+6240, U+6483, U+671F, U+6765, U+683C, U+7A2E, U+7A81, U+819D, U+81EA, U+8AB0, U+8FBC, U+9593;
+}
+
+@font-face {
+  font-family: "Zen Kaku Gothic New";
+  src: url("../fonts/zen-kaku-gothic-new-700-profile.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+304D, U+3053, U+306A;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-800-profile.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+41, U+49, U+4B, U+4E-4F;
+}
+
+@font-face {
+  font-family: "Profile Mono";
+  src: url("../fonts/profile-mono-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+20-7E, U+2014;
+}
+
+main {
+  min-inline-size: 0;
+  padding-block-start: var(--header-height);
+}
+
+section {
+  min-inline-size: 0;
+  margin-block-end: 2.5rem;
+}
+
+/* ------------------------------
+  hero
+------------------------------ */
+.hero {
+  position: relative;
+  overflow: clip;
+}
+
+.hero__media {
+  overflow: hidden;
+
+  img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: 50% 25%;
+  }
+}
+
+.hero__content {
+  padding: 1.5rem 1rem 2rem;
+}
+
+.hero__label {
+  margin-block-end: 0.75rem;
+
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 1.1;
+
+  /*sinceや2016年と左端を一致させるため*/
+  transform: translateX(-0.12em);
+}
+
+.hero__description {
+  padding-block: 1rem 1.5rem;
+
+  word-break: auto-phrase;
+  line-height: 1.8;
+}
+
+.hero__link {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 12rem;
+  min-block-size: 3.2rem;
+  padding-inline: 2.5rem;
+
+  color: var(--color-accentbtn-textcolor);
+  font-weight: 700;
+
+  background: var(--color-accent);
+  border: solid 1px currentColor;
+  border-radius: 0.5rem;
+
+  &::after {
+    content: "→" / "";
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-end: 1rem;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    transform: translateY(-50%);
+  }
+
+  &:hover {
+    background-color: #e19f2f;
+  }
+
+  &:focus-visible {
+    outline: solid 3px #000;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: background 0.3s linear;
+  }
+}
+
+/* ------------------------------
+  プロフィール
+------------------------------ */
+section.profile {
+  --profile-bg: #f4f3ef;
+  --profile-text: #121212;
+  --profile-muted: #6b6a66;
+  --profile-rule: #cfcdc6;
+  --profile-accent: #d9822b;
+
+  padding-block: 3rem 4rem;
+  padding-inline: var(--overall-padding);
+  margin-block-end: 0;
+
+  color: var(--profile-text);
+
+  background: var(--profile-bg);
+
+  .profile__band {
+    padding-block: 0.75rem;
+
+    border-block: solid 1px var(--profile-text);
+
+    .profile__band-list {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 0.25rem;
+      column-gap: 1.25rem;
+
+      font-size: 0.75rem;
+      font-family: "Profile Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      line-height: 1.6;
+      letter-spacing: 0.06em;
+      font-weight: 500;
+
+      text-transform: uppercase;
+
+      .profile__band-item {
+        white-space: nowrap;
+
+        &:last-child::before {
+          content: '';
+
+          display: inline-block;
+          inline-size: 0.5rem;
+          block-size: 0.5rem;
+          margin-inline-end: 0.5rem;
+          vertical-align: middle;
+
+          border-radius: 50%;
+          background: var(--profile-accent);
+        }
+      }
+    }
+  }
+
+  .profile__big {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1.5rem 0.5rem;
+
+    font-family: "Bricolage Grotesque", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(4.5rem, 21vw, 19rem);
+    font-weight: 800;
+    line-height: 0.8;
+    letter-spacing: -0.04em;
+
+    overflow: clip;
+  }
+
+  h2 {
+    /*ひらがな「きなこ」の文字*/
+    padding-block-start: 2rem;
+
+    font-family: "Zen Kaku Gothic New", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, 游ゴシック体, "Hiragino Kaku Gothic Pro", メイリオ, sans-serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .profile__list {
+    container-type: inline-size;
+    container-name: profile-list;
+
+    margin-block-start: 1.5rem;
+
+    font-family: "Zen Kaku Gothic New", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, 游ゴシック体, "Hiragino Kaku Gothic Pro", メイリオ, sans-serif;
+    font-weight: 500;
+
+    border-block-start: solid 1px var(--profile-text);
+
+    .profile__item {
+      display: grid;
+      align-items: baseline;
+      grid-template-columns: 6.5rem 1fr;
+      column-gap: 1rem;
+      padding-block: 0.9rem;
+
+      border-block-end: solid 1px var(--profile-rule);
+
+      @container profile-list (min-width: 31.25rem) {
+        grid-template-columns: 9rem 1fr;
+      }
+
+      dt {
+        color: var(--profile-muted);
+        font-size: 0.8125rem;
+      }
+
+      dd {
+        font-size: 1.0625rem;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  .profile__board__wrap {
+    container-type: inline-size;
+    margin-block-start: 3rem;
+  }
+
+  .profile__board {
+    position: relative;
+    aspect-ratio: 1 / 1.2;
+
+    @supports (block-size: 1cqi) {
+      aspect-ratio: auto;
+      block-size: calc(97.5cqi + 3.75rem);
+    }
+
+    .profile__photo {
+      position: absolute;
+
+      padding: 0.5rem 0.5rem 0;
+
+      background: #fff;
+      box-shadow: 0 20px 30px -18px rgb(0 0 0 / .45);
+
+      rotate: var(--tilt);
+
+
+      figcaption {
+        padding-block: 0.45rem;
+        
+        font-size: 0.75rem;
+        line-height: 1.6;
+        color: var(--profile-muted);
+      }
+
+      img {
+        inline-size: 100%;
+        block-size: auto;
+        object-fit: cover;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset-block-start: -0.6rem;
+        inset-inline-start: 50%;
+        translate: -50% 0;
+
+        inline-size: 4rem;
+        block-size: 1.2rem;
+
+        background: rgb(217 130 43 / .35);
+        rotate: -3deg;
+      }
+
+      &:nth-child(1) {
+        --tilt: -3deg;
+
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        inline-size: 48%;
+
+        img {
+          aspect-ratio: 4 / 5;
+        }
+      }
+
+      &:nth-child(2) {
+        --tilt: -1deg;
+
+        inset-block-end: 0;
+        inset-inline-start: 22%;
+        inline-size: 50%;
+
+        img {
+          aspect-ratio: 4 / 3;
+        }
+      }
+
+      &:nth-child(3) {
+        --tilt: 2deg;
+
+        inset-block-start: 8%;
+        inset-inline-end: 0;
+        inline-size: 44%;
+
+        img {
+          aspect-ratio: 1;
+        }
+      }
+    }
+  }
+}
+
+/* ------------------------------
+  PC
+------------------------------ */
+
+@media (min-width: 48rem) {
+  section.profile {
+    padding-block: 5rem 6rem;
+    padding-inline: 2.5rem;
+
+    .profile__band {
+      .profile__band-list {
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .hero__media img {
+    aspect-ratio: 16 / 9;
+    max-block-size: calc(100svh - var(--header-height));
+  }
+}
+
+/*  2列にするのは 64rem（1024px）から。*/
+@media (min-width: 64rem) {
+  section.profile {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas:
+      "band  band"
+      "big   big"
+      "name  board"
+      "list  board";
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: 4rem;
+    align-items: start;
+
+    .profile__band {
+      grid-area: band;
+    }
+
+    .profile__big {
+      grid-area: big;
+    }
+
+    h2 {
+      grid-area: name;
+    }
+
+    .profile__list {
+      grid-area: list;
+    }
+
+    .profile__board__wrap {
+      grid-area: board;
+      margin-block-start: 2rem;
+    }
+  }
+}
+
+/* ------------------------------
+  アニメーション
+------------------------------ */
+@keyframes profile-big-reveal {
+  from {
+    translate: 0 100%;
+  }
+
+  to {
+    translate: 0 0;
+  }
+}
+
+@keyframes board-tilt {
+  from {
+    rotate: calc(var(--tilt) * 3);
+    scale: 1.1;
+    opacity: 0;
+  }
+
+  to {
+    rotate: var(--tilt);
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes board-depth {
+  from {
+    translate: 0 var(--depth);
+  }
+
+  to {
+    translate: 0 calc(var(--depth) * -1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    section.profile {
+      .profile__big {
+        view-timeline: --kinako;
+
+        span {
+          animation: profile-big-reveal linear both;
+          animation-range: cover calc(var(--entry-delay)*4%) cover calc(20% + var(--entry-delay)*4%);
+          animation-timeline: --kinako;
+
+          &:nth-child(1) {
+            /*K*/
+            --entry-delay: 0;
+          }
+
+          &:nth-child(2) {
+            /*I*/
+            --entry-delay: 1;
+          }
+
+          &:nth-child(3) {
+            /*N*/
+            --entry-delay: 2;
+          }
+
+          &:nth-child(4) {
+            /*A*/
+            --entry-delay: 3;
+          }
+
+          &:nth-child(5) {
+            /*K*/
+            --entry-delay: 4;
+          }
+
+          &:nth-child(6) {
+            /*O*/
+            --entry-delay: 5;
+          }
+        }
+      }
+
+      .profile__board {
+        .profile__photo {
+          animation: board-tilt linear both, board-depth linear both;
+          animation-range: entry 0% cover 30%, cover 0% cover 100%;
+          animation-timeline: view(), view();
+
+
+          &:nth-child(1) {
+            --depth: 1rem;
+          }
+
+          &:nth-child(2) {
+            --depth: 2rem;
+          }
+
+          &:nth-child(3) {
+            --depth: 4rem;
+          }
+        }
+      }
+    }
+  }
+}

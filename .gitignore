@@ -1,0 +1,19 @@
+# Claude で作った比較案・スクリーンショット（サイトには使わない）
+Claude outputs/
+
+# 依存パッケージ（tools で npm install すると作られる）
+node_modules/
+
+# OS やエディタが自動で作るファイル
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ローカルの作業ツール（公開しない）
+/tools/
+
+# AI との作業メモ（公開しない）
+claude/
+
+# 下書き
+README-1.md
