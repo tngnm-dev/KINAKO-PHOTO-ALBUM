@@ -3,7 +3,7 @@
 実家の猫・きなこの写真を、撮影年ごとにたどれるアルバムサイトです。
 フレームワークや CMS は使わず、HTML / CSS / JavaScript だけで作っています。
 
-**公開URL**：https://（公開後に記入）
+**公開URL**：https://kinako-photo-album.vercel.app/
 
 ## まず見てほしいところ
 
