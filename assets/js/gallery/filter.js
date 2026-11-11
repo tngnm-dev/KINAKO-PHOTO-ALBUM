@@ -22,6 +22,17 @@ export function initYearFilter(statusElement, filterOptionsContainer, yearsConta
         }
       });
       countPhotos(statusElement, yearsContainer);
+
+      const filterWrap = filterOptionsContainer.closest(".gallery-filter-wrap");
+      const filterWrapBottom = filterWrap.getBoundingClientRect().bottom;
+      const statusTop = statusElement.getBoundingClientRect().top;
+
+      if (statusTop < filterWrapBottom) {
+        window.scrollBy({
+          top: statusTop - filterWrapBottom - 8,
+          behavior: "instant",
+        });
+      }
     }
   })
 }

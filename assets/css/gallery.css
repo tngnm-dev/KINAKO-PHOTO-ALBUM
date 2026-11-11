@@ -112,7 +112,7 @@
 }
 
 .gallery-status {
-  margin-block: 1rem 2rem;
+  padding-block: 1rem 2rem;
 
   font-size: 0.875rem;
   color: var(--color-text-muted);
@@ -125,8 +125,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 3rem;
-
-  /*CLS対策*/
+}
+/*CLS対策*/
+.gallery__years:empty {
   min-block-size: 100svh;
 }
 
