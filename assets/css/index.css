@@ -155,6 +155,8 @@ section.profile {
 
   background: var(--profile-bg);
 
+  overflow-x: clip;
+
   .profile__band {
     padding-block: 0.75rem;
 
@@ -280,7 +282,7 @@ section.profile {
 
       figcaption {
         padding-block: 0.45rem;
-        
+
         font-size: 0.75rem;
         line-height: 1.6;
         color: var(--profile-muted);
@@ -369,6 +371,33 @@ section.profile {
 
 /*  2列にするのは 64rem（1024px）から。*/
 @media (min-width: 64rem) {
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    block-size: calc(80dvh - var(--header-height));
+    min-block-size: 16rem;
+    /*.hero__contentの大体の縦幅*/
+    margin-block-end: 0;
+  }
+
+  .hero__media {
+    block-size: 100%;
+
+    img {
+      block-size: 100%;
+      aspect-ratio: auto;
+      max-block-size: none;
+      object-position: 50% 30%;
+    }
+  }
+  .hero__content{
+    display: grid;
+    align-content: center;
+    justify-items: start;
+
+    padding-inline: 3rem;
+  }
+
   section.profile {
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
